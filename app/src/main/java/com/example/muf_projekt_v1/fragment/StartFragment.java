@@ -26,6 +26,7 @@ import static android.content.ContentValues.TAG;
 
 public class StartFragment extends Fragment {
     private SensorViewModel sensorViewModel;
+    private String messungname="messung1";
 
     private MainViewModel mainViewModel;
     private Observer<SensorData> observer;
@@ -72,7 +73,7 @@ public class StartFragment extends Fragment {
                 if (observer==null){
                     observer = (sensorData) ->{
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
-                        Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis());
+                        Speicher tempsensor = new Speicher(messungname,count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis());
                         datenList.add(tempsensor);
                         //Überprüfen obs auch funktiooniert
                         Log.d(TAG,"on Create: Daten: "+datenList.get(count).getX());

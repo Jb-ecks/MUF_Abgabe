@@ -11,6 +11,9 @@ import com.example.muf_projekt_v1.Sensor.Speicher;
 @Dao
 public abstract class SensorDao {
 
+    //@Query("SELECT * FROM messung WHERE messungname=:messungname")
+    //public abstract LiveData<Speicher> getUserByEmail(String messungname);
+
     @Query("SELECT * FROM messung")
     public abstract LiveData<Speicher> getMessung();
 
