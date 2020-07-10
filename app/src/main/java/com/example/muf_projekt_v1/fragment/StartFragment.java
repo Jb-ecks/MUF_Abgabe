@@ -18,17 +18,28 @@ import com.example.muf_projekt_v1.R;
 import com.example.muf_projekt_v1.Sensor.MainViewModel;
 import com.example.muf_projekt_v1.Sensor.SensorData;
 import com.example.muf_projekt_v1.Sensor.Speicher;
+import com.example.muf_projekt_v1.viewmodell.SensorViewModel;
 
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
 public class StartFragment extends Fragment {
+    private SensorViewModel sensorViewModel;
 
     private MainViewModel mainViewModel;
     private Observer<SensorData> observer;
     private ArrayList<Speicher> datenList;
     private int count =0;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sensorViewModel =new ViewModelProvider(
+                getActivity(),
+                ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())
+        ).get(SensorViewModel.class);
+    }
 
     @Nullable
     @Override
@@ -61,15 +72,17 @@ public class StartFragment extends Fragment {
                 if (observer==null){
                     observer = (sensorData) ->{
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
-                        datenList.add(new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis()));
+                        Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis());
+                        datenList.add(tempsensor);
                         //Überprüfen obs auch funktiooniert
                         Log.d(TAG,"on Create: Daten: "+datenList.get(count).getX());
                         count=count+1;
+                        // eingabe in die Datenbank
+                        sensorViewModel.setSensor(tempsensor);
                     };
 
                     mainViewModel.sensorDataLive.observe(getViewLifecycleOwner(),observer); // musste sensorDataLiveData public machen wieso keine Ahnung.
                 }
-
             }
         });
 
