@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 //wussten nicht wie wir eine Liste selber erstellen und mit der klasse konnten wir das ansonsten überflüssig
-@Entity(tableName="Messung")
+@Entity(tableName="messung")
 public class Speicher {
     @PrimaryKey
     private String messungname;

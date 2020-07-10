@@ -3,6 +3,7 @@ package com.example.muf_projekt_v1.Sensor;
 import android.hardware.Sensor;
 
 public class SensorData {
+
     private Sensor sensor;
     private float x;
     private float y;

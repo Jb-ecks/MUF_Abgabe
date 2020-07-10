@@ -12,6 +12,11 @@
         android:layout_height="wrap_content"
         android:text="@string/headerLable" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mesungNameEdit"
+        android:hint="Mesungname"/>
 
     <Button
         android:id="@+id/startbutton"

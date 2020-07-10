@@ -3,7 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigationfragments"
-    app:startDestination="@id/firstfragment">
+    app:startDestination="@id/beginnfragment">
+
+    <fragment
+        android:id="@+id/beginnfragment"
+        tools:layout="@layout/fragment_beginn"
+        android:name="com.example.muf_projekt_v1.fragment.FragmentBeginn"
+        android:label="BeginnFragment" >
+
+        <action
+            android:id="@+id/action_beginnfragment_to_firstfragment"
+            app:destination="@id/firstfragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/firstfragment"

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/headerBeginnFragment"
+        android:text="Wähle eine Aktion"/>
+
+
+    <Button
+        android:id="@+id/submitMessung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="zurMessung" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submitDatenbank"
+        android:text="zurDatenbank"/>
+</LinearLayout>
