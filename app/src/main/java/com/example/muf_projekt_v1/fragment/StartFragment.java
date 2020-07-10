@@ -62,7 +62,7 @@ public class StartFragment extends Fragment {
                     observer = (sensorData) ->{
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
                         datenList.add(new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis()));
-                        //Überprüfen auch funktiooniert
+                        //Überprüfen obs auch funktiooniert
                         Log.d(TAG,"on Create: Daten: "+datenList.get(count).getX());
                         count=count+1;
                     };
@@ -80,6 +80,8 @@ public class StartFragment extends Fragment {
                 mainViewModel.sensorDataLive.removeObserver(observer);
                 observer=null;
                 werte.setText("Messung gestoppt");
+                count=0;
+                datenList.clear();
             }
         });
 

@@ -1,8 +1,15 @@
 package com.example.muf_projekt_v1.Sensor;
 
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 //wussten nicht wie wir eine Liste selber erstellen und mit der klasse konnten wir das ansonsten überflüssig
+@Entity(tableName="Messung")
 public class Speicher {
+    @PrimaryKey
+    private String messungname;
+
     private int zeile;
     private float x;
     private float y;
@@ -15,6 +22,14 @@ public class Speicher {
         this.z = z;
         this.time = time;
         this.zeile=zeile;
+    }
+
+    public String getMessungname() {
+        return messungname;
+    }
+
+    public void setMessungname(String messungname) {
+        this.messungname = messungname;
     }
 
     public float getX() {
