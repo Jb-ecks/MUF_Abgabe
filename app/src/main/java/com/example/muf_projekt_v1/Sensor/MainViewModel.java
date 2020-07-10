@@ -11,18 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
 // übernommen von Vorlesung und Variablen verändert #neverchangearunningsystem
 public class MainViewModel extends AndroidViewModel {
 
-    public LiveData<SensorData> sensorData;// musste ich machen damit es mir in startfragment angezeigt wird ich weiss es ist falsch da eigentlich nur gelesen werden soll
+    public LiveData<SensorData> sensorDataLive;// musste ich machen damit es mir in startfragment angezeigt wird ich weiss es ist falsch da eigentlich nur gelesen werden soll
 
     public MainViewModel(@NonNull Application application){
         super(application);
-        sensorData = new SensorDataLiveData(application.getApplicationContext());
+        sensorDataLive = new SensorDataLiveData(application.getApplicationContext());
     }
 
     private final static class SensorDataLiveData extends LiveData<SensorData>{

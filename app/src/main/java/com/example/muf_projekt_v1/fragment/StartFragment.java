@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.muf_projekt_v1.R;
 import com.example.muf_projekt_v1.Sensor.MainViewModel;
@@ -39,13 +39,11 @@ public class StartFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        //final NavController controller = Navigation.findNavController(view);
 
         final TextView vendor = view.findViewById(R.id.vendor);
         final TextView name = view.findViewById(R.id.name);
         final TextView werte = view.findViewById(R.id.xyz);
         final TextView version = view.findViewById(R.id.version);
-        final Button start_button=view.findViewById(R.id.startbutton);
 
 
         observer = null;
@@ -55,7 +53,7 @@ public class StartFragment extends Fragment {
                         getActivity().getApplication()))
                 .get(MainViewModel.class);
 
-        start_button.setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.startbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Hier findet alles statt wenn der Startbutton gedrückt ist.
@@ -69,9 +67,26 @@ public class StartFragment extends Fragment {
                         count=count+1;
                     };
 
-                    mainViewModel.sensorData.observe(getViewLifecycleOwner(),observer); // musste sensorDataLiveData public machen wieso keine Ahnung.
+                    mainViewModel.sensorDataLive.observe(getViewLifecycleOwner(),observer); // musste sensorDataLiveData public machen wieso keine Ahnung.
                 }
 
+            }
+        });
+
+        view.findViewById(R.id.stopbutton).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                mainViewModel.sensorDataLive.removeObserver(observer);
+                observer=null;
+                werte.setText("Messung gestoppt");
+            }
+        });
+
+        view.findViewById(R.id.fedbackfragmentbutton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_startfragment_to_fedbackfragment);
             }
         });
     }
