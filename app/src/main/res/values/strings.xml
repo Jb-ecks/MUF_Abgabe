@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MUF_Projekt_v1</string>
+    <string name="headerLable">Messung der Beschleunigungsdaten</string>
+    <string name="startButton">Messung Starten</string>
+</resources>
