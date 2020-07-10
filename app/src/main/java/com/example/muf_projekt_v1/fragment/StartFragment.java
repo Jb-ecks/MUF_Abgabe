@@ -1,6 +1,7 @@
 package com.example.muf_projekt_v1.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,18 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.muf_projekt_v1.R;
 import com.example.muf_projekt_v1.Sensor.MainViewModel;
 import com.example.muf_projekt_v1.Sensor.SensorData;
+import com.example.muf_projekt_v1.Sensor.Speicher;
+
+import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 public class StartFragment extends Fragment {
 
     private MainViewModel mainViewModel;
     private Observer<SensorData> observer;
+    private ArrayList<Speicher> datenList;
+    private int count =0;
 
     @Nullable
     @Override
@@ -38,7 +46,10 @@ public class StartFragment extends Fragment {
         final TextView werte = view.findViewById(R.id.xyz);
         final TextView version = view.findViewById(R.id.version);
         final Button start_button=view.findViewById(R.id.startbutton);
+
+
         observer = null;
+        datenList = new ArrayList<>();
         mainViewModel = new ViewModelProvider(this,
                 ViewModelProvider.AndroidViewModelFactory.getInstance(
                         getActivity().getApplication()))
@@ -52,6 +63,10 @@ public class StartFragment extends Fragment {
                 if (observer==null){
                     observer = (sensorData) ->{
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
+                        datenList.add(new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis()));
+                        //Überprüfen auch funktiooniert
+                        Log.d(TAG,"on Create: Daten: "+datenList.get(count).getX());
+                        count=count+1;
                     };
 
                     mainViewModel.sensorData.observe(getViewLifecycleOwner(),observer); // musste sensorDataLiveData public machen wieso keine Ahnung.

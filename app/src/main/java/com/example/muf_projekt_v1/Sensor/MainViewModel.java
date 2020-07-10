@@ -11,6 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 // übernommen von Vorlesung und Variablen verändert #neverchangearunningsystem
 public class MainViewModel extends AndroidViewModel {
 
@@ -92,7 +96,9 @@ public class MainViewModel extends AndroidViewModel {
                     values[1] - g[1],
                     values[2] - g[2]
             };
+
         }
+
 
     }
 }
