@@ -18,7 +18,7 @@ import com.example.muf_projekt_v1.R;
 import com.example.muf_projekt_v1.Sensor.MainViewModel;
 import com.example.muf_projekt_v1.Sensor.SensorData;
 import com.example.muf_projekt_v1.Sensor.Speicher;
-import com.example.muf_projekt_v1.viewmodell.SensorViewModel;
+import com.example.muf_projekt_v1.viewmodellDatenbank.SensorViewModel;
 
 import java.util.ArrayList;
 

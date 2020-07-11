@@ -14,7 +14,7 @@ import androidx.lifecycle.LiveData;
 // übernommen von Vorlesung und Variablen verändert #neverchangearunningsystem
 public class MainViewModel extends AndroidViewModel {
 
-    public LiveData<SensorData> sensorDataLive;// musste ich machen damit es mir in startfragment angezeigt wird ich weiss es ist falsch da eigentlich nur gelesen werden soll
+    public LiveData<SensorData> sensorDataLive;// weil ich umstrukturiert habe, musste ich das machen damit es mir in startfragment angezeigt wird. Ich weiss es ist falsch da eigentlich nur gelesen werden soll
 
     public MainViewModel(@NonNull Application application){
         super(application);

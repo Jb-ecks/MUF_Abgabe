@@ -1,4 +1,4 @@
-package com.example.muf_projekt_v1.viewmodell;
+package com.example.muf_projekt_v1.viewmodellDatenbank;
 
 import android.app.Application;
 

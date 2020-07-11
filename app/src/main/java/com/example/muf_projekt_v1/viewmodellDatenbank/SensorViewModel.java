@@ -1,7 +1,6 @@
-package com.example.muf_projekt_v1.viewmodell;
+package com.example.muf_projekt_v1.viewmodellDatenbank;
 
 import android.app.Application;
-import android.hardware.Sensor;
 import android.os.Handler;
 import android.os.Looper;
 

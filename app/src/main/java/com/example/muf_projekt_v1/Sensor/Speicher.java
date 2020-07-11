@@ -5,6 +5,11 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 //wussten nicht wie wir eine Liste selber erstellen und mit der klasse konnten wir das ansonsten überflüssig
+
+// Ansatz um einzelne Messungen unterschiedlich zu speichern:https://stackoverflow.com/questions/56326640/associating-tables-using-room-database-in-android-studio
+//so startet zeile immer bei null und überschreibt die alte Messung (wenn ichs richtig verstanden habe
+// war aber froh dass das ertsmal gelaufen ist
+
 @Entity(tableName="messung")
 public class Speicher {
     @PrimaryKey
