@@ -31,18 +31,6 @@
         android:text="@string/stopButton" />
 
     <TextView
-        android:id="@+id/vendor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/headerLable" />
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/headerLable" />
-
-    <TextView
         android:id="@+id/xyz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -51,6 +39,12 @@
         android:id="@+id/version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/liveChart_all"
+        android:layout_width="match_parent"
+        android:layout_height="272dp" />
+
     <Button
         android:id="@+id/fedbackfragmentbutton"
         android:layout_width="match_parent"

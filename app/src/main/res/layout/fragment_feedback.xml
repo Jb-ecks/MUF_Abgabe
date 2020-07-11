@@ -6,7 +6,32 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="167dp"
-        android:text="es hat gefunst!" />
+        android:layout_height="37dp"
+        android:text="So hier ein Feedback!" />
+    <TextView
+        android:id="@+id/tesxtfeldfeedback"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:text="So das war deine letzte Messung:" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/liveChart_x"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/liveChart_y"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/liveChart_z"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+    <Button
+        android:id="@+id/buttonhomefeedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bring Mich zurück!" />
 
 </LinearLayout>

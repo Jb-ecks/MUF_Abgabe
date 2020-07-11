@@ -28,12 +28,19 @@ public class FragmentBeginn extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        final EditText messungname = view.findViewById(R.id.mesungNameEdit);
+        //final EditText messungname = view.findViewById(R.id.mesungNameEdit);
 
         view.findViewById(R.id.submitMessung).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.action_beginnfragment_to_firstfragment);
+            }
+        });
+
+        view.findViewById(R.id.submitDatenbank).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_startfragment_to_fedbackfragment);
             }
         });
     }

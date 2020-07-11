@@ -26,9 +26,11 @@ public class SensorViewModel extends BaseViewModel {
         return getDatabase().getSensorDao().getMessung();
     }
 
-    public LiveData<Speicher> messungInserted(){
-        return sensorLiveData;
+    public Speicher[] getAll(){
+        return getDatabase().getSensorDao().loadallData();
     }
+
+    //public LiveData<Speicher> messungInserted(){  return sensorLiveData;   }
 
     public class SensorLiveData extends LiveData<Speicher> {
         private AtomicBoolean active = new AtomicBoolean();

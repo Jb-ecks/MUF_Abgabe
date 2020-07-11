@@ -11,6 +11,7 @@ public class MUFAplication extends Application {
     public void onCreate() {
         super.onCreate();
         mufDatabase = Room.databaseBuilder(this,MUFDatabase.class,"mufProjekt")
+                //TODO: kann man "mufProjekt"  ändern sodass man variable im interface dort übergeben kann
                 .build();
     }
     public MUFDatabase getDatabase() {return mufDatabase;}

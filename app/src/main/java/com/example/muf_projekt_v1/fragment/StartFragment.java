@@ -19,6 +19,12 @@ import com.example.muf_projekt_v1.Sensor.MainViewModel;
 import com.example.muf_projekt_v1.Sensor.SensorData;
 import com.example.muf_projekt_v1.Sensor.Speicher;
 import com.example.muf_projekt_v1.viewmodellDatenbank.SensorViewModel;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 
@@ -52,8 +58,8 @@ public class StartFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        final TextView vendor = view.findViewById(R.id.vendor);
-        final TextView name = view.findViewById(R.id.name);
+        //final TextView vendor = view.findViewById(R.id.vendor);
+        //final TextView name = view.findViewById(R.id.name);
         final TextView werte = view.findViewById(R.id.xyz);
         final TextView version = view.findViewById(R.id.version);
 
@@ -65,6 +71,19 @@ public class StartFragment extends Fragment {
                         getActivity().getApplication()))
                 .get(MainViewModel.class);
 
+        //Graph für Livedata
+        LineChart lineChart_all = view.findViewById(R.id.liveChart_all);
+        Description desc_x = new Description();
+        desc_x.setText("");
+        lineChart_all.setDescription(desc_x);
+        lineChart_all.setDrawGridBackground(false);
+
+        ArrayList<Entry> x_werte = new ArrayList<Entry>();
+        ArrayList<Entry> y_werte = new ArrayList<Entry>();
+        ArrayList<Entry> z_werte = new ArrayList<Entry>();
+        ArrayList<ILineDataSet> alle_werte = new ArrayList<>();
+
+
         view.findViewById(R.id.startbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,13 +92,39 @@ public class StartFragment extends Fragment {
                 if (observer==null){
                     observer = (sensorData) ->{
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
-                        Speicher tempsensor = new Speicher(messungname,count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis());
+                        Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis());
                         datenList.add(tempsensor);
-                        //Überprüfen obs auch funktiooniert
-                        Log.d(TAG,"on Create: Daten: "+datenList.get(count).getX());
-                        count=count+1;
+
                         // eingabe in die Datenbank
                         sensorViewModel.setSensor(tempsensor);
+
+                        // TODO: Ja mit einem ist es nett entweder ne scrollbar und sensor auswählen oder zusammen plotten können
+                        // Live Daten in Anzeigen
+                        //x_werte.add(new Entry(count,sensorData.getX()));
+                        y_werte.add(new Entry(count, sensorData.getY()));
+                        //z_werte.add(new Entry(count, sensorData.getZ()));
+                        //all_werte.add(new Entry(count, sensorData.getX(), sensorData.getY(), sensorData.getZ()))
+
+                        LineDataSet xDataSet = new LineDataSet(x_werte,"x_Data");
+                        LineDataSet yDataSet = new LineDataSet(y_werte,"y_Data");
+                        //LineDataSet zDataSet = new LineDataSet(z_werte,"z_Data");
+
+
+                        //alle_werte.add(xDataSet);
+                        //alle_werte.add(yDataSet);
+                        //alle_werte.add(zDataSet);
+
+                        //LineData data =new LineData(alle_werte);
+                        //lineChart_all.setData(data);
+                        //lineChart_all.invalidate();
+
+                        LineData data =new LineData(yDataSet);
+                        lineChart_all.setData(data);
+                        lineChart_all.invalidate();
+
+                        //Überprüfen ob Liste auch funktioniert
+                        Log.d(TAG,"on Create: Daten: "+datenList.get(count).getX());
+                        count=count+1;
                     };
 
                     mainViewModel.sensorDataLive.observe(getViewLifecycleOwner(),observer); // musste sensorDataLiveData public machen wieso keine Ahnung.

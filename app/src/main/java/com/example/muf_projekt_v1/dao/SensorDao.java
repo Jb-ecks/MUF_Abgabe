@@ -15,7 +15,11 @@ public abstract class SensorDao {
     //public abstract LiveData<Speicher> getUserByEmail(String messungname);
 
     @Query("SELECT * FROM messung")
+    public abstract Speicher [] loadallData();
+
+    @Query("SELECT * FROM messung")
     public abstract LiveData<Speicher> getMessung();
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract long insert (Speicher speicher);

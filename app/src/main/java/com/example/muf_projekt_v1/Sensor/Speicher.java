@@ -15,24 +15,24 @@ public class Speicher {
     @PrimaryKey
     private int zeile;
 
-    private String messungname;
+    //private String messungname;
     private float x;
     private float y;
     private float z;
     private long time;
 
-    public Speicher(String messungname, int zeile ,float x, float y, float z, long time) {
+    public Speicher( int zeile ,float x, float y, float z, long time) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.time = time;
         this.zeile=zeile;
-        this.messungname=messungname;
+        //this.messungname=messungname;
     }
 
-    public String getMessungname() { return messungname;}
+    //public String getMessungname() { return messungname;}
 
-    public void setMessungname(String messungname) {this.messungname = messungname;}
+    //public void setMessungname(String messungname) {this.messungname = messungname;}
 
     public float getX() {
         return x;
