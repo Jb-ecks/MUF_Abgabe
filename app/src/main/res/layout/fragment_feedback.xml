@@ -9,7 +9,7 @@
         android:layout_height="37dp"
         android:text="So hier ein Feedback!" />
     <TextView
-        android:id="@+id/tesxtfeldfeedback"
+        android:id="@+id/testfeldfeedback"
         android:layout_width="match_parent"
         android:layout_height="37dp"
         android:text="So das war deine letzte Messung:" />

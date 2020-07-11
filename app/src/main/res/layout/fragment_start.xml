@@ -11,6 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/headerLable" />
+    <TextView
+        android:id="@+id/messungname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:layout_width="match_parent"
@@ -35,10 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/version"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_all"

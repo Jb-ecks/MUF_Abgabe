@@ -34,6 +34,7 @@ public class FragmentBeginn extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.action_beginnfragment_to_firstfragment);
+
             }
         });
 
