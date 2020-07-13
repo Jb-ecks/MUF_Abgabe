@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    >
+    android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/start_fragment"
-        android:layout_weight="1"
-        android:name="com.example.muf_projekt_v1.fragment.StartFragment"
+        android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
-        android:layout_height="0dip"/>
+        android:layout_height="wrap_content"
 
-</LinearLayout>
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigationfragments"/>
+
+</FrameLayout>

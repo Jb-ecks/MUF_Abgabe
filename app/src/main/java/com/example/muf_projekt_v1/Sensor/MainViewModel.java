@@ -14,11 +14,11 @@ import androidx.lifecycle.LiveData;
 // übernommen von Vorlesung und Variablen verändert #neverchangearunningsystem
 public class MainViewModel extends AndroidViewModel {
 
-    public LiveData<SensorData> sensorData;// musste ich machen damit es mir in startfragment angezeigt wird ich weiss es ist falsch da eigentlich nur gelesen werden soll
+    public LiveData<SensorData> sensorDataLive;// weil ich umstrukturiert habe, musste ich das machen damit es mir in startfragment angezeigt wird. Ich weiss es ist falsch da eigentlich nur gelesen werden soll
 
     public MainViewModel(@NonNull Application application){
         super(application);
-        sensorData = new SensorDataLiveData(application.getApplicationContext());
+        sensorDataLive = new SensorDataLiveData(application.getApplicationContext());
     }
 
     private final static class SensorDataLiveData extends LiveData<SensorData>{
@@ -92,7 +92,9 @@ public class MainViewModel extends AndroidViewModel {
                     values[1] - g[1],
                     values[2] - g[2]
             };
+
         }
+
 
     }
 }
