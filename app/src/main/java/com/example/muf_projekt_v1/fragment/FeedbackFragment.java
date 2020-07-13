@@ -26,6 +26,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FeedbackFragment extends Fragment {
 
@@ -33,10 +34,11 @@ public class FeedbackFragment extends Fragment {
     //ArrayList<Speicher> datenDatenbank;
     private MainViewModel mainViewModel;
     private SensorViewModel sensorViewModel;
-    private Speicher[] daten;
+    private List<Speicher> daten;
     private Observer<SensorData> observer;
     private ArrayList<Speicher> datenList;
     int count = 0;
+
 
     //getDatabase().getSensorDao().insert(speicher);
 
@@ -132,14 +134,13 @@ public class FeedbackFragment extends Fragment {
 
                 });
 // Ab Hier eigener Blödsinn
-//        final TextView werte = view.findViewById(R.id.tesxtfeldfeedback);
+//        final TextView werte = view.findViewById(R.id.testfeldfeedback);
 //        daten=sensorViewModel.getAll();
-//        //daten[0].getX();
-//        werte.setText("x:" + daten[0].getX() );//+ " y " + daten[1].getY() + " z "+daten[1].getZ());
-//        //datenDatenbank.add();
-//        // eingabe in die Datenbank
-//
-//
+       //daten[0].getX();
+//         werte.setText("x:" + daten.get(0)) ;//[0].getX() );//+ " y " + daten[1].getY() + " z "+daten[1].getZ());
+        //datenDatenbank.add();
+        // eingabe in die Datenbank
+
        view.findViewById(R.id.buttonhomefeedback).setOnClickListener(new View.OnClickListener() {@Override
             public void onClick(View v) {
                    mainViewModel.sensorDataLive.removeObserver(observer);

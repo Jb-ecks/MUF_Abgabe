@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.muf_projekt_v1.Sensor.Speicher;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
@@ -26,7 +27,7 @@ public class SensorViewModel extends BaseViewModel {
         return getDatabase().getSensorDao().getMessung();
     }
 
-    public Speicher[] getAll(){
+    public List<Speicher> getAll(){
         return getDatabase().getSensorDao().loadallData();
     }
 

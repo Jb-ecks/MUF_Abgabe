@@ -8,6 +8,8 @@ import androidx.room.Query;
 
 import com.example.muf_projekt_v1.Sensor.Speicher;
 
+import java.util.List;
+
 @Dao
 public abstract class SensorDao {
 
@@ -15,7 +17,7 @@ public abstract class SensorDao {
     //public abstract LiveData<Speicher> getUserByEmail(String messungname);
 
     @Query("SELECT * FROM messung")
-    public abstract Speicher [] loadallData();
+    public abstract List<Speicher> loadallData();
 
     @Query("SELECT * FROM messung")
     public abstract LiveData<Speicher> getMessung();
