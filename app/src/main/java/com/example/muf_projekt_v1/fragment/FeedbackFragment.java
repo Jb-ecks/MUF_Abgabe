@@ -39,9 +39,9 @@ public class FeedbackFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         final TextView werte = view.findViewById(R.id.tesxtfeldfeedback);
-        daten=sensorViewModel.getAll();
+        //daten=sensorViewModel.getAll();
         //daten[0].getX();
-        werte.setText("x:" + daten[0].getX() );//+ " y " + daten[1].getY() + " z "+daten[1].getZ());
+        //werte.setText("x:" + daten[0].getX() );//+ " y " + daten[1].getY() + " z "+daten[1].getZ());
         //datenDatenbank.add();
         // eingabe in die Datenbank
 

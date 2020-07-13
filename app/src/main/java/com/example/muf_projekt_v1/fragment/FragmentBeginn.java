@@ -40,7 +40,7 @@ public class FragmentBeginn extends Fragment {
         view.findViewById(R.id.submitDatenbank).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_startfragment_to_fedbackfragment);
+                Navigation.findNavController(view).navigate(R.id.action_beginnfragment_to_fragmentcapture);
             }
         });
     }
