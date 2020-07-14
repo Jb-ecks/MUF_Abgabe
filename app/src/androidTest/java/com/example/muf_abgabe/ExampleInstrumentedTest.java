@@ -1,4 +1,4 @@
-package com.example.muf_projekt_v1;
+package com.example.muf_abgabe;
 
 import android.content.Context;
 

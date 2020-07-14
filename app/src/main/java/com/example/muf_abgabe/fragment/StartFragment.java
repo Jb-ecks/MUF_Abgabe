@@ -1,4 +1,4 @@
-package com.example.muf_projekt_v1.fragment;
+package com.example.muf_abgabe.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,11 +16,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.muf_projekt_v1.R;
-import com.example.muf_projekt_v1.Sensor.MainViewModel;
-import com.example.muf_projekt_v1.Sensor.SensorData;
-import com.example.muf_projekt_v1.Sensor.Speicher;
-import com.example.muf_projekt_v1.viewmodellDatenbank.SensorViewModel;
+import com.example.muf_abgabe.R;
+import com.example.muf_abgabe.Sensor.MainViewModel;
+import com.example.muf_abgabe.Sensor.SensorData;
+import com.example.muf_abgabe.Sensor.Speicher;
+import com.example.muf_abgabe.viewmodellDatenbank.SensorViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
@@ -65,8 +64,6 @@ public class StartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         final TextView werte = view.findViewById(R.id.xyz);
-        //final TextView version = view.findViewById(R.id.version);
-        final EditText etMessungName = view.findViewById(R.id.mesungNameEdit);
 
         observer = null;
         datenList = new ArrayList<>();
@@ -94,7 +91,7 @@ public class StartFragment extends Fragment {
                 // Hier findet alles statt wenn der Startbutton gedrückt ist.
                 // der observer
                 Toast.makeText(getContext(),"Messung wird gestartet und wird in Datenbank gespeichert." ,Toast.LENGTH_SHORT).show();
-                messungname = etMessungName.getText().toString();
+                //messungname = etMessungName.getText().toString();
                 if (observer==null){
 
                     //if (messungname==null){
@@ -107,7 +104,7 @@ public class StartFragment extends Fragment {
                         if(Zmax<sensorData.getZ()){Zmax=sensorData.getZ();}
 
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
-                        Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis(),messungname);
+                        Speicher tempsensor = new Speicher(count, sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis(),messungname);
                         datenList.add(tempsensor);
 
                         // eingabe in die Datenbank

@@ -1,4 +1,4 @@
-package com.example.muf_projekt_v1.Sensor;
+package com.example.muf_abgabe.Sensor;
 
 import android.hardware.Sensor;
 

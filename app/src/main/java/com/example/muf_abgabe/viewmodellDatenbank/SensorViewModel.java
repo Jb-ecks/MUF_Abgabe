@@ -1,13 +1,14 @@
-package com.example.muf_projekt_v1.viewmodellDatenbank;
+package com.example.muf_abgabe.viewmodellDatenbank;
 
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
-import com.example.muf_projekt_v1.Sensor.Speicher;
+import com.example.muf_abgabe.Sensor.Speicher;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;

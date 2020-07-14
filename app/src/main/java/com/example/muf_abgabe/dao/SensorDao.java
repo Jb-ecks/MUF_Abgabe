@@ -1,4 +1,4 @@
-package com.example.muf_projekt_v1.dao;
+package com.example.muf_abgabe.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.muf_projekt_v1.Sensor.Speicher;
+import com.example.muf_abgabe.Sensor.Speicher;
 
 import java.util.List;
 
@@ -22,6 +22,8 @@ public abstract class SensorDao {
     @Query("SELECT * FROM messung")
     public abstract LiveData<Speicher> getMessung();
 
+    @Query("SELECT * FROM messung")
+    public abstract LiveData<List<Speicher>> getAllData();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract long insert (Speicher speicher);
