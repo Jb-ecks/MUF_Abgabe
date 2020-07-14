@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class StartFragment extends Fragment {
     private ArrayList<Speicher> datenList;
     private int count =0;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +60,9 @@ public class StartFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        //final TextView vendor = view.findViewById(R.id.vendor);
-        //final TextView name = view.findViewById(R.id.name);
         final TextView werte = view.findViewById(R.id.xyz);
         final TextView version = view.findViewById(R.id.version);
-
+        final EditText etMessungName = view.findViewById(R.id.mesungNameEdit);
 
         observer = null;
         datenList = new ArrayList<>();
@@ -89,10 +89,15 @@ public class StartFragment extends Fragment {
             public void onClick(View v) {
                 // Hier findet alles statt wenn der Startbutton gedrückt ist.
                 // der observer
+                messungname = etMessungName.getText().toString();
                 if (observer==null){
+
+                    //if (messungname==null){
+                    //    messungname="default_messung";}
+
                     observer = (sensorData) ->{
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
-                        Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis());
+                        Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis(),messungname);
                         datenList.add(tempsensor);
 
                         // eingabe in die Datenbank

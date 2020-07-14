@@ -18,11 +18,11 @@
         android:id="@+id/submitMessung"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="zurMessung" />
+        android:text="zur Messung" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/submitDatenbank"
-        android:text="zurDatenbank"/>
+        android:id="@+id/submitFragmentCapture"
+        android:text="Zum Capture"/>
 </LinearLayout>

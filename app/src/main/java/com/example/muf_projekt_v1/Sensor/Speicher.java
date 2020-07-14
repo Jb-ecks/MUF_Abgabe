@@ -13,26 +13,35 @@ import androidx.room.PrimaryKey;
 @Entity(tableName="messung")
 public class Speicher {
     @PrimaryKey
-    private int zeile;
+    private int idZeile;
 
-    //private String messungname;
+    private String messungname;
+    //private int zeile;
     private float x;
     private float y;
     private float z;
     private long time;
 
-    public Speicher( int zeile ,float x, float y, float z, long time) {
+    public Speicher( int idZeile ,float x, float y, float z, long time,String messungname) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.time = time;
-        this.zeile=zeile;
-        //this.messungname=messungname;
+        this.idZeile =idZeile;
+        this.messungname=messungname;
     }
 
-    //public String getMessungname() { return messungname;}
+    public String getMessungname() {
+        return messungname;
+    }
 
-    //public void setMessungname(String messungname) {this.messungname = messungname;}
+    public void setMessungname(String messungname) {
+        this.messungname = messungname;
+    }
+
+    //public int getIdMessung() {       return idMessung;   }
+
+    //public void setIdMessung(int idMessung) {       this.idMessung = idMessung;   }
 
     public float getX() {
         return x;
@@ -66,15 +75,12 @@ public class Speicher {
         this.time = time;
     }
 
-    public int getZeile() {
-        return zeile;
+    public int getIdZeile() {
+        return idZeile;
     }
 
-    public void setZeile(int zeile) {
-        this.zeile = zeile;
+    public void setIdZeile(int idZeile) {
+        this.idZeile = idZeile;
     }
 
-    public void setTime(long time) {
-        this.time = time;
-    }
 }

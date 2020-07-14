@@ -32,6 +32,7 @@
             android:id="@+id/action_startfragment_to_fedbackfragment"
             app:destination="@id/fedbackfragment" />
     </fragment>
+
     <fragment
         tools:layout="@layout/fragment_feedback"
         android:id="@+id/fedbackfragment"
@@ -41,6 +42,7 @@
             android:id="@+id/action_fedbackfragment_to_beginnfragment"
             app:destination="@id/beginnfragment" />
     </fragment>
+
     <fragment
         tools:layout="@layout/fragment_capture"
         android:id="@+id/fragmentcapture"
