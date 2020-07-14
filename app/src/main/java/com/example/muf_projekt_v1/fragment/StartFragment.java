@@ -65,7 +65,7 @@ public class StartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         final TextView werte = view.findViewById(R.id.xyz);
-        final TextView version = view.findViewById(R.id.version);
+        //final TextView version = view.findViewById(R.id.version);
         final EditText etMessungName = view.findViewById(R.id.mesungNameEdit);
 
         observer = null;
@@ -106,8 +106,6 @@ public class StartFragment extends Fragment {
                         if(Ymax<sensorData.getY()){Ymax=sensorData.getY();}
                         if(Zmax<sensorData.getZ()){Zmax=sensorData.getZ();}
 
-                        werte.setText("Maximalwerte: x-" + Xmax+ " y-" + Ymax + " z-"+Zmax);
-                        Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis());
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
                         Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis(),messungname);
                         datenList.add(tempsensor);
