@@ -25,6 +25,9 @@ public abstract class SensorDao {
     @Query("SELECT * FROM messung")
     public abstract LiveData<List<Speicher>> getAllData();
 
+    @Query("SELECT * FROM messung")
+    public abstract LiveData<List<Speicher>> getLastData();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract long insert (Speicher speicher);
 

@@ -1,7 +1,12 @@
 package com.example.muf_abgabe.fragment;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +25,7 @@ import com.example.muf_abgabe.R;
 import com.example.muf_abgabe.Sensor.MainViewModel;
 import com.example.muf_abgabe.Sensor.SensorData;
 import com.example.muf_abgabe.Sensor.Speicher;
+import com.example.muf_abgabe.muzik.MediaService;
 import com.example.muf_abgabe.viewmodellDatenbank.SensorViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -35,6 +41,9 @@ import static android.content.ContentValues.TAG;
 public class StartFragment extends Fragment {
     private SensorViewModel sensorViewModel;
     private String messungname="messung1";
+    private String tempMessungname;
+    private MediaService.MediaBinder mediaBinder;
+    private MediaServiceConnection mediaServiceConnection = null;
 
     private MainViewModel mainViewModel;
     private Observer<SensorData> observer;
@@ -64,7 +73,7 @@ public class StartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         final TextView werte = view.findViewById(R.id.xyz);
-
+        // name abrufen um auf diese Messung zu gehen final EditText tempMessungname = view.findViewById(R.id.editText);
         observer = null;
         datenList = new ArrayList<>();
         mainViewModel = new ViewModelProvider(this,
@@ -91,11 +100,11 @@ public class StartFragment extends Fragment {
                 // Hier findet alles statt wenn der Startbutton gedrückt ist.
                 // der observer
                 Toast.makeText(getContext(),"Messung wird gestartet und wird in Datenbank gespeichert." ,Toast.LENGTH_SHORT).show();
-                //messungname = etMessungName.getText().toString();
+                //tempMessungname = etMessungName.getText().toString();
                 if (observer==null){
 
-                    //if (messungname==null){
-                    //    messungname="default_messung";}
+                    if (messungname!=null){
+                        messungname="default_messung";}
 
                     observer = (sensorData) ->{
                         //Visuelles feedback
@@ -168,7 +177,45 @@ public class StartFragment extends Fragment {
                 observer=null;
                 count=0;
                 datenList.clear();
+                if (mediaBinder == null) return;
+                mediaBinder.play(R.raw.reifenverlust);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mediaServiceConnection == null) {
+            getActivity().bindService(new Intent(getContext(), MediaService.class),
+                    mediaServiceConnection = new MediaServiceConnection(),
+                    Context.BIND_AUTO_CREATE);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mediaServiceConnection != null) {
+            getActivity().unbindService(mediaServiceConnection);
+            mediaServiceConnection = null;
+        }
+    }
+
+    private final class MediaServiceConnection implements ServiceConnection {
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            mediaBinder = (MediaService.MediaBinder) iBinder;
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mediaBinder = null;
+
+        }
+
+
     }
 }

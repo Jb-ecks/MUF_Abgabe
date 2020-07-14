@@ -6,13 +6,16 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:text="So hier ein Feedback!" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="So hier ein Feedback!"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"/>
     <TextView
         android:id="@+id/testfeldfeedback"
         android:layout_width="match_parent"
         android:layout_height="37dp"
-        android:text="So das war deine letzte Messung:" />
+        android:text="So desch is die letzte Messung:" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_x"

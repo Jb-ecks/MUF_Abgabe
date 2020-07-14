@@ -16,7 +16,6 @@ public class Speicher {
     @PrimaryKey
     @NonNull
     private int idZeile;
-
     private String messungname;
     //private int zeile;
     private float x;

@@ -1,7 +1,12 @@
 package com.example.muf_abgabe.fragment;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +25,7 @@ import com.example.muf_abgabe.Sensor.MainViewModel;
 import com.example.muf_abgabe.Sensor.SensorData;
 import com.example.muf_abgabe.Sensor.Speicher;
 import com.example.muf_abgabe.datenbank.MUFAplication;
+import com.example.muf_abgabe.muzik.MediaService;
 import com.example.muf_abgabe.viewmodellDatenbank.SensorViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -28,13 +34,12 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static android.content.ContentValues.TAG;
 
 public class FeedbackFragment extends Fragment {
 
-
-    //ArrayList<Speicher> datenDatenbank;
     private MainViewModel mainViewModel;
     private SensorViewModel sensorViewModel;
     private Speicher[] daten;
@@ -42,25 +47,20 @@ public class FeedbackFragment extends Fragment {
     private ArrayList<Speicher> datenList;
     int count = 0;
 
-    //getDatabase().getSensorDao().insert(speicher);
-
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_feedback,container,false);
+        View view = inflater.inflate(R.layout.fragment_feedback, container, false);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        final TextView werte = view.findViewById(R.id.testfeldfeedback);
-
-
         //langweilig weil das gleiche wie davor
-        observer=null;
+        observer = null;
         final TextView feedback = view.findViewById(R.id.testfeldfeedback);
 
 
@@ -86,7 +86,6 @@ public class FeedbackFragment extends Fragment {
         ArrayList<Entry> y_values = new ArrayList<Entry>();
         ArrayList<Entry> z_values = new ArrayList<Entry>();
 
-
         ((MUFAplication) getActivity()
                 .getApplication())
                 .getDatabase()
@@ -98,7 +97,7 @@ public class FeedbackFragment extends Fragment {
 
                             for (Speicher s : speichers) {
                                 // TODO: render speicher
-                                Log.d(TAG,"DB. "+s.getX());
+                                Log.d(TAG, "DB. " + s.getX());
                                 x_values.add(new Entry(s.getIdZeile(), s.getX()));
                                 y_values.add(new Entry(s.getIdZeile(), s.getY()));
                                 z_values.add(new Entry(s.getIdZeile(), s.getZ()));
@@ -136,20 +135,16 @@ public class FeedbackFragment extends Fragment {
 
                             }
                         });
+        final TextView werte = view.findViewById(R.id.testfeldfeedback);
 
-
-
-        //});
 
         view.findViewById(R.id.buttonhomefeedback).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mainViewModel.sensorDataLive.removeObserver(observer);
-                //observer=null;
-                //datenList.clear();
                 Navigation.findNavController(view).navigate(R.id.action_fedbackfragment_to_beginnfragment);
-                }
+            }
         });
 
     }
+
 }
