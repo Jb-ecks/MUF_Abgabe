@@ -6,4 +6,15 @@
     <string name="feedbackButton">get Feedback</string>
     <string name="messungnameButton">Messungname speichern</string>
     <string name="messungNameEingabe">messungname</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aufzeichnung_starten">Aufzeichnung starten</string>
+    <string name="fu_druckmessung">Fußdruckmessung</string>
+    <string name="druck_vorfu">Druck Vorfuß:</string>
+    <string name="duck_ferse">Duck Ferse:</string>
+    <string name="aufzeichnung_beenden">Aufzeichnung beenden</string>
+    <string name="rady_to_capture">Rady to Capture</string>
+    <string name="vorfu_druck">Vorfu?druck:</string>
+    <string name="druck_links">Druck links:</string>
+    <string name="druck_rechts">Druck rechts:</string>
+    <string name="vorfussdruck">Vorfußdruck:</string>
 </resources>

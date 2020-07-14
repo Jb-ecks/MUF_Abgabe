@@ -34,11 +34,10 @@ public class FeedbackFragment extends Fragment {
     //ArrayList<Speicher> datenDatenbank;
     private MainViewModel mainViewModel;
     private SensorViewModel sensorViewModel;
-    private List<Speicher> daten;
+    private Speicher[] daten;
     private Observer<SensorData> observer;
     private ArrayList<Speicher> datenList;
     int count = 0;
-
 
     //getDatabase().getSensorDao().insert(speicher);
 
@@ -53,6 +52,13 @@ public class FeedbackFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        final TextView werte = view.findViewById(R.id.testfeldfeedback);
+        //daten=sensorViewModel.getAll();
+        //daten[0].getX();
+        //werte.setText("x:" + daten[0].getX() );//+ " y " + daten[1].getY() + " z "+daten[1].getZ());
+        //datenDatenbank.add();
+        // eingabe in die Datenbank
 
         //langweilig weil das gleiche wie davor
         observer=null;
@@ -91,61 +97,55 @@ public class FeedbackFragment extends Fragment {
                 .get(MainViewModel.class);
 
         mainViewModel.sensorDataLive.observe(getViewLifecycleOwner(),(sensorData)-> {
-                    feedback.setText(
-                            "x:" + sensorData.getX() + " y " + sensorData.getY() + " z " + sensorData.getZ()
-                    );
+            feedback.setText(
+                    "x:" + sensorData.getX() + " y " + sensorData.getY() + " z " + sensorData.getZ()
+            );
 
-                    x_values.add(new Entry(count, sensorData.getX()));
-                    y_values.add(new Entry(count, sensorData.getY()));
-                    z_values.add(new Entry(count, sensorData.getZ()));
-                    count = count + 1;
+            x_values.add(new Entry(count, sensorData.getX()));
+            y_values.add(new Entry(count, sensorData.getY()));
+            z_values.add(new Entry(count, sensorData.getZ()));
+            count = count + 1;
 
-                    LineDataSet lineDataSet_x = new LineDataSet(x_values, "x-axis");
-                    lineDataSet_x.setColor(Color.GREEN);
-                    lineDataSet_x.setDrawCircles(false);
-                    lineDataSet_x.setDrawCircleHole(false);
-                    lineDataSet_x.setDrawValues(false);
+            LineDataSet lineDataSet_x = new LineDataSet(x_values, "x-axis");
+            lineDataSet_x.setColor(Color.GREEN);
+            lineDataSet_x.setDrawCircles(false);
+            lineDataSet_x.setDrawCircleHole(false);
+            lineDataSet_x.setDrawValues(false);
 
 
-                    LineDataSet lineDataSet_y = new LineDataSet(y_values, "x-axis");
-                    lineDataSet_y.setColor(Color.GREEN);
-                    lineDataSet_y.setDrawCircles(false);
-                    lineDataSet_y.setDrawCircleHole(false);
-                    lineDataSet_y.setDrawValues(false);
+            LineDataSet lineDataSet_y = new LineDataSet(y_values, "x-axis");
+            lineDataSet_y.setColor(Color.GREEN);
+            lineDataSet_y.setDrawCircles(false);
+            lineDataSet_y.setDrawCircleHole(false);
+            lineDataSet_y.setDrawValues(false);
 
-                    LineDataSet lineDataSet_z = new LineDataSet(z_values, "z-axis");
-                    lineDataSet_z.setColor(Color.GREEN);
-                    lineDataSet_z.setDrawCircles(false);
-                    lineDataSet_z.setDrawCircleHole(false);
-                    lineDataSet_z.setDrawValues(false);
+            LineDataSet lineDataSet_z = new LineDataSet(z_values, "z-axis");
+            lineDataSet_z.setColor(Color.GREEN);
+            lineDataSet_z.setDrawCircles(false);
+            lineDataSet_z.setDrawCircleHole(false);
+            lineDataSet_z.setDrawValues(false);
 
-                    LineData data_x = new LineData(lineDataSet_x);
-                    LineData data_y = new LineData(lineDataSet_y);
-                    LineData data_z = new LineData(lineDataSet_z);
+            LineData data_x = new LineData(lineDataSet_x);
+            LineData data_y = new LineData(lineDataSet_y);
+            LineData data_z = new LineData(lineDataSet_z);
 
-                    lineChart_x.setData(data_x);
-                    lineChart_x.invalidate();
+            lineChart_x.setData(data_x);
+            lineChart_x.invalidate();
 
-                    lineChart_y.setData(data_y);
-                    lineChart_y.invalidate();
+            lineChart_y.setData(data_y);
+            lineChart_y.invalidate();
 
-                    lineChart_z.setData(data_z);
-                    lineChart_z.invalidate();
+            lineChart_z.setData(data_z);
+            lineChart_z.invalidate();
 
-                });
-// Ab Hier eigener Blödsinn
-//        final TextView werte = view.findViewById(R.id.testfeldfeedback);
-//        daten=sensorViewModel.getAll();
-       //daten[0].getX();
-//         werte.setText("x:" + daten.get(0)) ;//[0].getX() );//+ " y " + daten[1].getY() + " z "+daten[1].getZ());
-        //datenDatenbank.add();
-        // eingabe in die Datenbank
+        });
 
-       view.findViewById(R.id.buttonhomefeedback).setOnClickListener(new View.OnClickListener() {@Override
+        view.findViewById(R.id.buttonhomefeedback).setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                   mainViewModel.sensorDataLive.removeObserver(observer);
-                   observer=null;
-                   datenList.clear();
+                mainViewModel.sensorDataLive.removeObserver(observer);
+                observer=null;
+                datenList.clear();
                 Navigation.findNavController(view).navigate(R.id.action_fedbackfragment_to_beginnfragment);
                 }
         });

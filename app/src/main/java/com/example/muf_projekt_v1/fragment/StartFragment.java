@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,11 +64,9 @@ public class StartFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        //final TextView vendor = view.findViewById(R.id.vendor);
-        //final TextView name = view.findViewById(R.id.name);
         final TextView werte = view.findViewById(R.id.xyz);
-        final TextView version = view.findViewById(R.id.messungname);
-
+        final TextView version = view.findViewById(R.id.version);
+        final EditText etMessungName = view.findViewById(R.id.mesungNameEdit);
 
         observer = null;
         datenList = new ArrayList<>();
@@ -95,7 +94,12 @@ public class StartFragment extends Fragment {
                 // Hier findet alles statt wenn der Startbutton gedrückt ist.
                 // der observer
                 Toast.makeText(getContext(),"Messung wird gestartet und wird in Datenbank gespeichert." ,Toast.LENGTH_SHORT).show();
+                messungname = etMessungName.getText().toString();
                 if (observer==null){
+
+                    //if (messungname==null){
+                    //    messungname="default_messung";}
+
                     observer = (sensorData) ->{
                         //Visuelles feedback
                         if(Xmax<sensorData.getX()){Xmax=sensorData.getX();}
@@ -104,6 +108,8 @@ public class StartFragment extends Fragment {
 
                         werte.setText("Maximalwerte: x-" + Xmax+ " y-" + Ymax + " z-"+Zmax);
                         Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis());
+                        werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
+                        Speicher tempsensor = new Speicher(count,sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis(),messungname);
                         datenList.add(tempsensor);
 
                         // eingabe in die Datenbank
