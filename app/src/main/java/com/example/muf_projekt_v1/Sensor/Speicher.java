@@ -1,6 +1,7 @@
 package com.example.muf_projekt_v1.Sensor;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,8 +14,8 @@ import androidx.room.PrimaryKey;
 @Entity(tableName="messung")
 public class Speicher {
     @PrimaryKey
+    @NonNull
     private int idZeile;
-
     private String messungname;
     //private int zeile;
     private float x;
@@ -22,13 +23,13 @@ public class Speicher {
     private float z;
     private long time;
 
-    public Speicher( int idZeile ,float x, float y, float z, long time,String messungname) {
+    public Speicher( int idZeile, float x, float y, float z, long time,String messungname) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.time = time;
-        this.idZeile =idZeile;
         this.messungname=messungname;
+        this.idZeile=idZeile;
     }
 
     public String getMessungname() {

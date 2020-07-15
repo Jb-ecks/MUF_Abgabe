@@ -2,17 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/drawablehintergrund">
+
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:text="So hier ein Feedback!" />
-    <TextView
-        android:id="@+id/testfeldfeedback"
-        android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:text="So das war deine letzte Messung:" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="So desch sind alle Daten:"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#f3e6ff"/>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_x"

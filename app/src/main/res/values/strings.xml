@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MUF_Projekt_v1</string>
+    <string name="app_name">MUF_Abgabe</string>
     <string name="headerLable">Messung der Beschleunigungsdaten</string>
     <string name="startButton">Messung Starten</string>
     <string name="stopButton">Stop</string>
@@ -17,4 +17,6 @@
     <string name="druck_links">Druck links:</string>
     <string name="druck_rechts">Druck rechts:</string>
     <string name="vorfussdruck">Vorfußdruck:</string>
+    <string name="mesungname_eingeben">Mesungname eingeben</string>
+    <string name="ButtonClear">Datenbank leeren</string>
 </resources>
