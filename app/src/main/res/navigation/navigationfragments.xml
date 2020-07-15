@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/beginnfragment"
         tools:layout="@layout/fragment_beginn"
-        android:name="com.example.muf_abgabe.fragment.FragmentBeginn"
+        android:name="com.example.muf_projekt_v1.fragment.FragmentBeginn"
         android:label="BeginnFragment" >
 
         <action
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/firstfragment"
         tools:layout="@layout/fragment_start"
-        android:name="com.example.muf_abgabe.fragment.StartFragment"
+        android:name="com.example.muf_projekt_v1.fragment.StartFragment"
         android:label="StartFragment" >
 
         <action
@@ -39,7 +39,7 @@
     <fragment
         tools:layout="@layout/fragment_feedback"
         android:id="@+id/fedbackfragment"
-        android:name="com.example.muf_abgabe.fragment.FeedbackFragment"
+        android:name="com.example.muf_projekt_v1.fragment.FeedbackFragment"
         android:label="SecondFragment" >
         <action
             android:id="@+id/action_fedbackfragment_to_beginnfragment"
@@ -53,7 +53,7 @@
     <fragment
         tools:layout="@layout/fragment_capture"
         android:id="@+id/fragmentcapture"
-        android:name="com.example.muf_abgabe.fragment.CaptureFragment"
+        android:name="com.example.muf_projekt_v1.fragment.CaptureFragment"
         android:label="CaptureFragment">
 
         <action

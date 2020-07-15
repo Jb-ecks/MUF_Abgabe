@@ -1,4 +1,4 @@
-package com.example.muf_abgabe.fragment;
+package com.example.muf_projekt_v1.fragment;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -22,13 +22,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.muf_abgabe.R;
-import com.example.muf_abgabe.Sensor.MainViewModel;
-import com.example.muf_abgabe.Sensor.SensorData;
-import com.example.muf_abgabe.Sensor.Speicher;
-import com.example.muf_abgabe.datenbank.MUFDatabase;
-import com.example.muf_abgabe.muzik.MediaService;
-import com.example.muf_abgabe.viewmodellDatenbank.SensorViewModel;
+import com.example.muf_projekt_v1.R;
+import com.example.muf_projekt_v1.Sensor.MainViewModel;
+import com.example.muf_projekt_v1.Sensor.SensorData;
+import com.example.muf_projekt_v1.Sensor.Speicher;
+import com.example.muf_projekt_v1.datenbank.MUFDatabase;
+import com.example.muf_projekt_v1.muzik.MediaService;
+import com.example.muf_projekt_v1.viewmodellDatenbank.SensorViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
@@ -176,7 +176,7 @@ public class StartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mediaBinder == null) return;
-                mediaBinder.play(R.raw.start);
+                mediaBinder.play(R.raw.reifenverlust);
                 Navigation.findNavController(view).navigate(R.id.action_startfragment_to_fedbackfragment);
                 mainViewModel.sensorDataLive.removeObserver(observer);
                 observer=null;

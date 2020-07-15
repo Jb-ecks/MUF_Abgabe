@@ -1,4 +1,4 @@
-package com.example.muf_abgabe.fragment;
+package com.example.muf_projekt_v1.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.room.Database;
 
-import com.example.muf_abgabe.R;
-import com.example.muf_abgabe.datenbank.MUFAplication;
-import com.example.muf_abgabe.datenbank.MUFDatabase;
+import com.example.muf_projekt_v1.R;
+import com.example.muf_projekt_v1.datenbank.MUFAplication;
+import com.example.muf_projekt_v1.datenbank.MUFDatabase;
 
 public class FragmentBeginn extends Fragment {
     private MUFDatabase database;

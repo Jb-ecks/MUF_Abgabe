@@ -1,4 +1,4 @@
-package com.example.muf_abgabe.datenbank;
+package com.example.muf_projekt_v1.datenbank;
 
 import android.app.Application;
 

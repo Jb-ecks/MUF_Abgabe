@@ -1,4 +1,4 @@
-package com.example.muf_abgabe;
+package com.example.muf_projekt_v1;
 
 import android.os.Bundle;
 

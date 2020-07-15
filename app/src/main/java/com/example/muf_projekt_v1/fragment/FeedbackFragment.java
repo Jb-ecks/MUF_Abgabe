@@ -1,4 +1,4 @@
-package com.example.muf_abgabe.fragment;
+package com.example.muf_projekt_v1.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.muf_abgabe.R;
-import com.example.muf_abgabe.Sensor.Speicher;
-import com.example.muf_abgabe.datenbank.MUFAplication;
+import com.example.muf_projekt_v1.R;
+import com.example.muf_projekt_v1.Sensor.Speicher;
+import com.example.muf_projekt_v1.datenbank.MUFAplication;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;

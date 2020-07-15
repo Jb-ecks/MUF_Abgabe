@@ -1,4 +1,4 @@
-package com.example.muf_abgabe.muzik;
+package com.example.muf_projekt_v1.muzik;
 
 import android.app.Service;
 import android.content.Intent;

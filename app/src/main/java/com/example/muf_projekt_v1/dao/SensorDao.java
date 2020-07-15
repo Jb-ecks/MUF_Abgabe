@@ -1,13 +1,12 @@
-package com.example.muf_abgabe.dao;
+package com.example.muf_projekt_v1.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.muf_abgabe.Sensor.Speicher;
+import com.example.muf_projekt_v1.Sensor.Speicher;
 
 import java.util.List;
 

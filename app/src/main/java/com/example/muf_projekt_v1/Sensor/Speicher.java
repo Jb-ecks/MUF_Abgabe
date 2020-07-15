@@ -1,4 +1,4 @@
-package com.example.muf_abgabe.Sensor;
+package com.example.muf_projekt_v1.Sensor;
 
 
 import androidx.annotation.NonNull;

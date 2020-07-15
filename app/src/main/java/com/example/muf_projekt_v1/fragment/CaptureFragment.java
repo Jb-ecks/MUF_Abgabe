@@ -1,4 +1,4 @@
-package com.example.muf_abgabe.fragment;
+package com.example.muf_projekt_v1.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,10 +14,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.muf_abgabe.R;
-import com.example.muf_abgabe.Sensor.MainViewModel;
-import com.example.muf_abgabe.Sensor.SensorData;
-import com.example.muf_abgabe.viewmodellDatenbank.SensorViewModel;
+import com.example.muf_projekt_v1.R;
+import com.example.muf_projekt_v1.Sensor.MainViewModel;
+import com.example.muf_projekt_v1.Sensor.SensorData;
+import com.example.muf_projekt_v1.viewmodellDatenbank.SensorViewModel;
 
 
 public class CaptureFragment extends Fragment {
