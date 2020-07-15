@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_startfragment_to_fedbackfragment"
             app:destination="@id/fedbackfragment" />
+        <action
+            android:id="@+id/action_firstfragment_to_beginnfragment"
+            app:destination="@id/beginnfragment" />
     </fragment>
 
     <fragment
@@ -41,6 +44,10 @@
         <action
             android:id="@+id/action_fedbackfragment_to_beginnfragment"
             app:destination="@id/beginnfragment" />
+        <argument
+            android:name="MessungNameString"
+            android:defaultValue="Default"
+            app:argType="string"/>
     </fragment>
 
     <fragment

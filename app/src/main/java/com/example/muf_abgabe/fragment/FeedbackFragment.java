@@ -1,32 +1,20 @@
 package com.example.muf_abgabe.fragment;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.muf_abgabe.R;
-import com.example.muf_abgabe.Sensor.MainViewModel;
-import com.example.muf_abgabe.Sensor.SensorData;
 import com.example.muf_abgabe.Sensor.Speicher;
 import com.example.muf_abgabe.datenbank.MUFAplication;
-import com.example.muf_abgabe.muzik.MediaService;
-import com.example.muf_abgabe.viewmodellDatenbank.SensorViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
@@ -34,36 +22,32 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import static android.content.ContentValues.TAG;
 
 public class FeedbackFragment extends Fragment {
-
-    private MainViewModel mainViewModel;
-    private SensorViewModel sensorViewModel;
-    private Speicher[] daten;
-    private Observer<SensorData> observer;
-    private ArrayList<Speicher> datenList;
-    int count = 0;
-
+    private  String messungName;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
+        //Bundle args = getArguments(); // wollte Messungname übergeben hat aber nicht funktioniert
+        // FragmentArgs feedbackFragmentArgs = null;
+        /*
+        if(args != null)
+            feedbackFragmentArgs = FeedbackFragmentArgs.fromBundle(args);
+        if(feedbackFragmentArgs != null){
+            messungName = feedbackFragmentArgs.getDisplayString();
+        };*/
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        //langweilig weil das gleiche wie davor
-        observer = null;
-        final TextView feedback = view.findViewById(R.id.testfeldfeedback);
-
-
+        // Daten aus der Datenbank
         LineChart lineChart_x = view.findViewById(R.id.liveChart_x);
         Description desc_x = new Description();
         desc_x.setText("");
@@ -135,8 +119,6 @@ public class FeedbackFragment extends Fragment {
 
                             }
                         });
-        final TextView werte = view.findViewById(R.id.testfeldfeedback);
-
 
         view.findViewById(R.id.buttonhomefeedback).setOnClickListener(new View.OnClickListener() {
             @Override

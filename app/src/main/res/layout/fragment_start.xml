@@ -4,29 +4,33 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/drawablehintergrund"
     >
 
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/headerLable" />
-    <TextView
-        android:id="@+id/messungname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="@string/headerLable"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:textColor="#f3e6ff"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mesungNameEdit"
-        android:hint="Mesungname"/>
+        android:hint="@string/mesungname_eingeben"
+        android:layout_marginTop="30dp"
+        android:textColor="#f3e6ff"/>
 
     <Button
         android:id="@+id/startbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/startButton" />
+        android:text="@string/startButton"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:id="@+id/stopbutton"
@@ -35,22 +39,39 @@
         android:text="@string/stopButton" />
 
     <TextView
-        android:id="@+id/xyz"
+        android:id="@+id/messungStatus"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:textColor="#f3e6ff"/>
 
 
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_all"
         android:layout_width="match_parent"
-        android:layout_height="272dp" />
+        android:layout_height="260dp" />
 
     <Button
         android:id="@+id/fedbackfragmentbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/feedbackButton" />
+        android:text="@string/feedbackButton"
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:id="@+id/submitClearDatabase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ButtonClear"
+        android:layout_marginTop="10dp"/>
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/ic_action_home"
+        android:id="@+id/submitBack"/>
 
 
 </LinearLayout>

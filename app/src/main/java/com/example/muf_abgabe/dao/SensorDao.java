@@ -2,6 +2,7 @@ package com.example.muf_abgabe.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -27,6 +28,12 @@ public abstract class SensorDao {
 
     @Query("SELECT * FROM messung")
     public abstract LiveData<List<Speicher>> getLastData();
+
+    @Query("DELETE FROM messung WHERE messungname = :messungName")
+    public abstract void deleteAll(String messungName);
+
+    @Query("SELECT * FROM messung WHERE messungname = :messungName")
+    public abstract LiveData<List<Speicher>> getAllDataMessungName(String messungName);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract long insert (Speicher speicher);

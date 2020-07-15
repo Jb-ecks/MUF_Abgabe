@@ -56,26 +56,24 @@ public class CaptureFragment extends Fragment {
 
         mainViewModel.sensorDataLive.observe(getViewLifecycleOwner(), (sensorData) -> {
             vorfuss.setText("Vorfußdruck: " + sensorData.getX());
-            if (sensorData.getX()<1){vorfuss.setTextColor(Color.parseColor("#FFFFFF"));}
-            else if (sensorData.getX()<5){vorfuss.setTextColor(Color.parseColor("#FFFFFF"));}
-            else{vorfuss.setTextColor(Color.parseColor("#FFFFFF"));}
+            if (sensorData.getX()<1){vorfuss.setTextColor(Color.rgb(117, 5, 5));}
+            else if (sensorData.getX()>1 && sensorData.getX()<5){vorfuss.setTextColor(Color.rgb(234, 70, 62));}
+            else{vorfuss.setTextColor(Color.rgb(117, 5, 5));}
 
             mittelfuss.setText("Mittelfußdruck: " + sensorData.getY());
-            if (sensorData.getX()<1){mittelfuss.setTextColor(Color.parseColor("#FFFFFF"));}
-            else if (sensorData.getX()<5){mittelfuss.setTextColor(Color.parseColor("#FFFFFF"));}
-            else{mittelfuss.setTextColor(Color.parseColor("#FFFFFF"));}
+            if (sensorData.getY()<1){mittelfuss.setTextColor(Color.rgb(117, 5, 5));}
+            else if (sensorData.getY()>1 && sensorData.getY()<5){mittelfuss.setTextColor(Color.rgb(234, 70, 62));}
+            else{mittelfuss.setTextColor(Color.rgb(117, 5, 5));}
 
             ferse.setText("Fersendruck: " + sensorData.getZ());
-            if (sensorData.getX()<1){ferse.setTextColor(Color.parseColor("#FFFFFF"));}
-            else if (sensorData.getX()<5){ferse.setTextColor(Color.parseColor("#FFFFFF"));}
-            else{ferse.setTextColor(Color.parseColor("#FFFFFF"));}
+            if (sensorData.getZ()<1){ferse.setTextColor(Color.rgb(68, 142, 5));}
+            else if (sensorData.getZ()>1 && sensorData.getZ()<5){ferse.setTextColor(Color.rgb(234, 70, 62));}
+            else {ferse.setTextColor(Color.rgb(117, 5, 5));}
 
             resultierende= Math.sqrt(Math.pow(sensorData.getX(),2)+Math.pow(sensorData.getY(),2)+Math.pow(sensorData.getZ(),2));
             if (resultierende<2.5) {//Ibinder
             }
         });
-
-
 
         view.findViewById(R.id.feedbackfragmentbuttoncapture).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.example.muf_abgabe.R;
 import com.example.muf_abgabe.Sensor.MainViewModel;
 import com.example.muf_abgabe.Sensor.SensorData;
 import com.example.muf_abgabe.Sensor.Speicher;
+import com.example.muf_abgabe.datenbank.MUFDatabase;
 import com.example.muf_abgabe.muzik.MediaService;
 import com.example.muf_abgabe.viewmodellDatenbank.SensorViewModel;
 import com.github.mikephil.charting.charts.LineChart;
@@ -32,7 +34,6 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,8 @@ import static android.content.ContentValues.TAG;
 
 public class StartFragment extends Fragment {
     private SensorViewModel sensorViewModel;
-    private String messungname="messung1";
+    private MUFDatabase database;
+    private String messungName="defaultName";
     private String tempMessungname;
     private MediaService.MediaBinder mediaBinder;
     private MediaServiceConnection mediaServiceConnection = null;
@@ -71,8 +73,8 @@ public class StartFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-        final TextView werte = view.findViewById(R.id.xyz);
+        final EditText etMessungName = view.findViewById(R.id.mesungNameEdit);
+        final TextView werte = view.findViewById(R.id.messungStatus);
         // name abrufen um auf diese Messung zu gehen final EditText tempMessungname = view.findViewById(R.id.editText);
         observer = null;
         datenList = new ArrayList<>();
@@ -91,7 +93,6 @@ public class StartFragment extends Fragment {
         ArrayList<Entry> x_werte = new ArrayList<Entry>();
         ArrayList<Entry> y_werte = new ArrayList<Entry>();
         ArrayList<Entry> z_werte = new ArrayList<Entry>();
-        ArrayList<ILineDataSet> alle_werte = new ArrayList<>();
 
 
         view.findViewById(R.id.startbutton).setOnClickListener(new View.OnClickListener() {
@@ -100,11 +101,14 @@ public class StartFragment extends Fragment {
                 // Hier findet alles statt wenn der Startbutton gedrückt ist.
                 // der observer
                 Toast.makeText(getContext(),"Messung wird gestartet und wird in Datenbank gespeichert." ,Toast.LENGTH_SHORT).show();
-                //tempMessungname = etMessungName.getText().toString();
+                tempMessungname = etMessungName.getText().toString();
                 if (observer==null){
 
-                    if (messungname!=null){
-                        messungname="default_messung";}
+                    if (messungName!=null){
+                        if (messungName!=tempMessungname){
+                            messungName="default_messung";
+                            Log.d(TAG,"messungnameGeaendert: Name: "+messungName);}
+                    }
 
                     observer = (sensorData) ->{
                         //Visuelles feedback
@@ -113,7 +117,7 @@ public class StartFragment extends Fragment {
                         if(Zmax<sensorData.getZ()){Zmax=sensorData.getZ();}
 
                         werte.setText("x:" + sensorData.getX() + " y " + sensorData.getY() + " z "+sensorData.getZ());
-                        Speicher tempsensor = new Speicher(count, sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis(),messungname);
+                        Speicher tempsensor = new Speicher(count, sensorData.getX(),sensorData.getY() ,sensorData.getZ(), System.currentTimeMillis(),messungName);
                         datenList.add(tempsensor);
 
                         // eingabe in die Datenbank
@@ -124,7 +128,6 @@ public class StartFragment extends Fragment {
                         x_werte.add(new Entry(count,sensorData.getX()));
                         y_werte.add(new Entry(count, sensorData.getY()));
                         z_werte.add(new Entry(count, sensorData.getZ()));
-                        //all_werte.add(new Entry(count, sensorData.getX(), sensorData.getY(), sensorData.getZ()))
 
                         LineDataSet xDataSet = new LineDataSet(x_werte,"x_Data");
                         xDataSet.setColor(Color.GREEN);
@@ -172,13 +175,31 @@ public class StartFragment extends Fragment {
         view.findViewById(R.id.fedbackfragmentbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mediaBinder == null) return;
+                mediaBinder.play(R.raw.reifenverlust);
                 Navigation.findNavController(view).navigate(R.id.action_startfragment_to_fedbackfragment);
                 mainViewModel.sensorDataLive.removeObserver(observer);
                 observer=null;
                 count=0;
                 datenList.clear();
-                if (mediaBinder == null) return;
-                mediaBinder.play(R.raw.reifenverlust);
+            }
+        });
+
+        view.findViewById(R.id.submitClearDatabase).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (messungName != null) {
+                    if (database.getSensorDao().getAllDataMessungName(messungName) != null) { //funktioniert so doch nicht
+                        database.getSensorDao().deleteAll(messungName);
+                    }
+                }
+            }
+        });
+
+        view.findViewById(R.id.submitBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_firstfragment_to_beginnfragment);
             }
         });
     }
@@ -215,7 +236,5 @@ public class StartFragment extends Fragment {
             mediaBinder = null;
 
         }
-
-
     }
 }

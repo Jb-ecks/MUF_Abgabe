@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="@drawable/whatever"
     android:layout_height="match_parent">
 
     <TextView
@@ -10,19 +11,25 @@
         android:id="@+id/headerBeginnFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="220dp"
+        android:gravity="center_horizontal"
         android:text="Wähle eine Aktion"
-        tools:text="Mesung1" />
+        android:textColor="#f3e6ff"/>
 
 
     <Button
         android:id="@+id/submitMessung"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="zur Messung" />
+        android:text="zur Messung"
+        android:layout_marginTop="290dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/submitFragmentCapture"
-        android:text="Zum Capture"/>
+        android:text="Zum Capture"
+        android:layout_marginTop="10dp"/>
+
 </LinearLayout>
