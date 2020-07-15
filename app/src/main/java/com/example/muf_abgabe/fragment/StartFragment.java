@@ -176,7 +176,7 @@ public class StartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mediaBinder == null) return;
-                mediaBinder.play(R.raw.reifenverlust);
+                mediaBinder.play(R.raw.start);
                 Navigation.findNavController(view).navigate(R.id.action_startfragment_to_fedbackfragment);
                 mainViewModel.sensorDataLive.removeObserver(observer);
                 observer=null;
